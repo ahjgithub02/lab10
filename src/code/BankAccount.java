@@ -1,5 +1,10 @@
 /**
  * Represents a bank account with an account number and balance.
+ *
+ * @author Daryan Worya
+ * @author Andrew Hwang
+ * @author Yang Li
+ * @version 1.0
  */
 public class BankAccount
 {

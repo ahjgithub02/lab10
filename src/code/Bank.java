@@ -3,6 +3,11 @@ import java.util.Map;
 
 /**
  * Represents a bank that manages multiple bank accounts.
+ *
+ * @author Daryan Worya
+ * @author Andrew Hwang
+ * @author Yang Li
+ * @version 1.0
  */
 public class Bank {
     private final Map<String, BankAccount> accounts;
