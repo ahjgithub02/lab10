@@ -3,14 +3,14 @@ import java.util.Map;
 
 public class Bank
 {
-    private Map<String, BankAccount> accounts;
+    private final Map<String, BankAccount> accounts;
 
     public Bank()
     {
         accounts = new HashMap<>();
     }
 
-    public void addAccount(BankAccount account)
+    public void addAccount(final BankAccount account)
     {
         if (accounts.containsKey(account.getAccountId()))
         {
@@ -19,7 +19,7 @@ public class Bank
         accounts.put(account.getAccountId(), account);
     }
 
-    public BankAccount retrieveAccount(String accountId)
+    public BankAccount retrieveAccount(final String accountId)
     {
         if (!accounts.containsKey(accountId)) {
             throw new IllegalArgumentException("Account not found");

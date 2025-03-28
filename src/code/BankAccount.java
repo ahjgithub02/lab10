@@ -3,8 +3,8 @@ public class BankAccount
     private final String accountNumber;
     private double balance;
 
-    public BankAccount(String accountNumber,
-                       double balance)
+    public BankAccount(final String accountNumber,
+                       final double balance)
     {
         validateAccountNumber(accountNumber); //apperantly the result for this is ignored
         validateBalance(balance);
@@ -23,7 +23,7 @@ public class BankAccount
         return balance;
     }
 
-    public void deposit(double amount)
+    public void deposit(final double amount)
     {
         if (amount <= 0)
         {
@@ -32,7 +32,7 @@ public class BankAccount
         balance += amount;
     }
 
-    public void withdraw(double amount)
+    public void withdraw(final double amount)
     {
         if (amount <= 0)
         {
@@ -45,9 +45,9 @@ public class BankAccount
         balance -= amount;
     }
 
-    public void transferToBank(BankAccount recipient,
-                               String senderId,
-                               double amount) {
+    public void transferToBank(final BankAccount recipient,
+                               final String senderId,
+                               final double amount) {
         if (!this.accountNumber.equals(senderId))
         {
             throw new IllegalArgumentException("Sender account ID does not match");
