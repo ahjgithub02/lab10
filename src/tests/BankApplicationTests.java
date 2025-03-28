@@ -1,4 +1,5 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -79,4 +80,24 @@ public class BankApplicationTests {
 // - Checking the initial balance correctness.
 // - Handling invalid operations.
 // - Summing balances from multiple accounts in a single bank.
+@Test
+void initialBalanceIsCorrect() {
+    assertEquals(1000, account1.getBalanceUsd(), "Initial balance of account1 is incorrect");
+    assertEquals(500, account2.getBalanceUsd(), "Initial balance of account2 is incorrect");
+}
+
+    @Test
+    void handlingInvalidAccountAddition() {
+        BankAccount duplicateAccount = new BankAccount("12345", 100); // Duplicate ID of account1
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> bank1.addAccount(duplicateAccount));
+        assertEquals("Account ID already exists", exception.getMessage(), "Error message for duplicate account ID is incorrect");
+    }
+
+    @Test
+    void sumOfBalancesInSingleBank() {
+        bank1.addAccount(new BankAccount("11111", 300));
+        bank1.addAccount(new BankAccount("22222", 200));
+        assertEquals(1500, bank1.totalBalanceUsd(), "Total balance for bank1 is incorrect");
+    }
 }

@@ -1,12 +1,12 @@
 public class BankAccount
 {
-    private String accountNumber;
+    private final String accountNumber;
     private double balance;
 
     public BankAccount(String accountNumber,
                        double balance)
     {
-        validateAccountNumber(accountNumber);
+        validateAccountNumber(accountNumber); //apperantly the result for this is ignored
         validateBalance(balance);
 
         this.accountNumber = accountNumber;
@@ -58,15 +58,14 @@ public class BankAccount
 
     public static boolean validateAccountNumber(String accountNumber)
     {
-        return accountNumber != null && !accountNumber.isBlank();
+        return accountNumber != null && !accountNumber.isBlank(); //this is never used
     }
 
-    public static boolean validateBalance(double balance)
+    public static void validateBalance(double balance)
     {
         if (balance < 0)
         {
             throw new IllegalArgumentException("Initial balance cannot be negative");
         }
-        return true;
     }
 }
